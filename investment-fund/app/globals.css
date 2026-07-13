@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-fraunces: "Fraunces", serif;
+  --font-plex-sans: "IBM Plex Sans", sans-serif;
+  --font-plex-mono: "IBM Plex Mono", monospace;
+}
+
+* {
+  border-color: theme("colors.line");
+}
+
+body {
+  background-color: theme("colors.paper");
+  color: theme("colors.ink");
+  background-image:
+    linear-gradient(theme("colors.paper") 0%, theme("colors.paper") 100%),
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      rgba(18, 33, 28, 0.035) 28px
+    );
+}
+
+::selection {
+  background-color: theme("colors.gold-soft");
+}
+
+.hairline {
+  border-top: 1px solid theme("colors.line");
+}
+
+.stamp-ring {
+  transition: stroke-dashoffset 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Focus visibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid theme("colors.teal");
+  outline-offset: 2px;
+}
