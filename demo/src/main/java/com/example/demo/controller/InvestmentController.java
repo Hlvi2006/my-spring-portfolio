@@ -40,4 +40,9 @@ public class InvestmentController {
 
         return  investmentService.updateInvestment(id, request.getName());
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteInvestment(@PathVariable Long id){
+        investmentService.deleteInvestment(id);
+    }
 }

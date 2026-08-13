@@ -46,8 +46,8 @@ public class DataSeeder implements CommandLineRunner {
         investment2.setAmount(new BigDecimal("3000"));
         investment2.setFund(fund);
 
-        investment1 = investmentRepository.save(investment1);
-        investment2 = investmentRepository.save(investment2);
+//        investment1 = investmentRepository.save(investment1);
+//        investment2 = investmentRepository.save(investment2);
 
         Notification notification1 = new Notification();
         notification1.setInvestment(investment1);
@@ -61,7 +61,7 @@ public class DataSeeder implements CommandLineRunner {
         notification2.setScheduledAt(LocalDateTime.now().plusDays(1));
         notification2.setMessageStatus(NotfStatus.PENDING);
 
-        notificationRepository.save(notification1);
-        notificationRepository.save(notification2);
+//        notificationRepository.save(notification1);
+//        notificationRepository.save(notification2);
     }
 }
