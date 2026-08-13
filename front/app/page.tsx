@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// CapitalSeal importunu sildik
 import { InvestmentRow } from "@/components/InvestmentRow";
 import { SortControl } from "@/components/SortControl";
 import { AddToFundModal } from "@/components/AddToFundModal";
@@ -20,18 +19,23 @@ export default function HomePage() {
 
   async function refresh() {
     setLoadError(null);
+
     try {
       const [fundData, invData] = await Promise.all([
         getFund(),
         listInvestments(sort),
       ]);
+
       setFund(fundData);
       setInvestments(invData);
     } catch (err) {
       setLoadError(
-        err instanceof Error ? err.message : "Could not reach the backend."
+        err instanceof Error
+          ? err.message
+          : "Could not reach the backend."
       );
     }
+
     setLoading(false);
   }
 
@@ -56,10 +60,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <section className="border border-line bg-panel">
-        {/* sm:grid-cols-[auto_1fr] klassını grid-cols-1 etdik ki, sola tam yaslansın */}
         <div className="grid gap-8 p-8 grid-cols-1 sm:items-center sm:p-10">
-          {/* <CapitalSeal /> komponenti burdan silindi */}
-
           <div>
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
               Available to invest
@@ -95,6 +96,7 @@ export default function HomePage() {
             <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
               The ledger
             </p>
+
             <h2 className="font-display text-2xl italic text-ink">
               Positions ({investments.length})
             </h2>
@@ -112,6 +114,7 @@ export default function HomePage() {
             <p className="font-display text-xl italic text-ink">
               No positions recorded yet.
             </p>
+
             <p className="mt-1 text-sm text-muted">
               Record your first investment to open the ledger.
             </p>
@@ -119,7 +122,18 @@ export default function HomePage() {
         ) : (
           <div>
             {investments.map((inv, i) => (
-              <InvestmentRow key={inv.id} investment={inv} index={i} />
+              <InvestmentRow
+                key={inv.id}
+                investment={inv}
+                index={i}
+                onDeleted={(id) => {
+                  setInvestments((current) =>
+                    current.filter(
+                      (investment) => String(investment.id) !== String(id)
+                    )
+                  );
+                }}
+              />
             ))}
           </div>
         )}

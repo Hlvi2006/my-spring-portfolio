@@ -1,7 +1,7 @@
 "use client";
 
 const OPTIONS: { value: string; label: string }[] = [
-  { value: "created_desc", label: "Newest first" },
+  { value: "amount_desc", label: "Sort by Amount" },
   { value: "amount_desc", label: "Amount ↓" },
   { value: "amount_asc", label: "Amount ↑" },
   { value: "name_asc", label: "Name A–Z" },

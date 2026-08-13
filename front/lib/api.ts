@@ -74,6 +74,11 @@ export function updateInvestment(
     body: JSON.stringify(data),
   });
 }
+export function deleteInvestment(id: string): Promise<void> {
+  return request<void>(`/investments/${id}`, {
+    method: "DELETE",
+  });
+}
 
 // --- Notifications --------------------------------------------------------
 
