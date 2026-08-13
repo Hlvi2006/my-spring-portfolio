@@ -45,9 +45,10 @@ public class InvestmentService {
 
         Investment investment = investRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("Investment not found!"));
+
         investment.setName(name);
 
-        return investment;
+        return investRepo.save(investment);
     }
 
     @Transactional(readOnly = true)
