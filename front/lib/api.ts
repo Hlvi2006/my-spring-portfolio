@@ -12,8 +12,7 @@
 
 import { Fund, Investment, Notification } from "./types";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://my-spring-portfolio-776r.onrender.com/api";
+const BASE_URL = "https://my-spring-portfolio-776r.onrender.com/api";
 const FUND_ID = "1";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
